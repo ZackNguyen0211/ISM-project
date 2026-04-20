@@ -56,7 +56,7 @@ streamlit run app.py
 3. Open **Predict Risk %** and enter one patient profile.
 4. Click **Predict** to get the heart disease probability.
 
-## Team Work Split (5 Members)
+## Team Work Split (6 Members)
 
 ### Member 1 - Data Engineer
 - Owns `heart_disease_app/data.py`
@@ -93,6 +93,14 @@ streamlit run app.py
   - Manage session state and app lifecycle
   - Validate end-to-end usage flow
   - Maintain README and project run instructions
+
+### Member 6 - QA/Release Engineer
+- Owns testing, quality gates, and release readiness
+- Responsibilities:
+  - Create manual and automated test scenarios for data validation, training flow, and prediction outputs
+  - Run regression checks whenever model settings or UI behavior change
+  - Validate probability output consistency across repeated runs
+  - Maintain release checklist, known issues list, and versioned delivery notes
 
 ## Notes
 

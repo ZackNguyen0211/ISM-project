@@ -100,3 +100,33 @@ heart_disease_app/ui.py
 - Easy parallel development by multiple team members
 - Consistent training logic across all model candidates
 - Transparent model comparison and explainable selection rule
+
+## 9) Updated Task Allocation for a 6-Person Team
+
+### Member 1 - Data Engineer
+- Owns data loading and validation logic
+- Handles input schema checks and data integrity safeguards
+
+### Member 2 - ML Engineer (Training)
+- Owns preprocessing and model training pipelines
+- Tunes model settings and monitors training metrics
+
+### Member 3 - Prediction Engineer
+- Owns inference path for single-patient prediction
+- Maintains probability extraction and fallback conversion logic
+
+### Member 4 - Frontend/App Engineer
+- Owns user interface and interaction flow
+- Maintains patient input form and result visualization components
+
+### Member 5 - Integrator/PM
+- Owns cross-module integration and delivery coordination
+- Maintains app orchestration and documentation consistency
+
+### Member 6 - QA/Release Engineer (New Workstream)
+- Owns quality assurance and release readiness
+- Defines test matrix for data validation, training, and prediction behavior
+- Runs regression checks before each release
+- Maintains release checklist, known issues, and handover notes
+
+This additional QA/Release stream is intentionally introduced to ensure the workload scales cleanly from 5 to 6 contributors.
