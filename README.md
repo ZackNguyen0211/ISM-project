@@ -58,35 +58,35 @@ streamlit run app.py
 
 ## Team Work Split (6 Members)
 
-### Member 1 - Data Engineer
+### Nguyễn Hà Thanh - Data Engineer
 - Owns `heart_disease_app/data.py`
 - Responsibilities:
   - Handle dataset input and loading
   - Validate binary target labels (0/1)
   - Compute median/min/max values for prediction form defaults
 
-### Member 2 - ML Engineer (Model Training)
+### Nguyễn Ngọc Trường Duy - ML Engineer (Model Training)
 - Owns `heart_disease_app/modeling.py`
 - Responsibilities:
   - Build preprocessing + model pipelines
   - Train 4 classification models
   - Implement leaderboard and best-model selection logic
 
-### Member 3 - Prediction Engineer
+### Nguyễn Hoàng Minh Nghĩa - Prediction Engineer
 - Owns `heart_disease_app/prediction.py`
 - Responsibilities:
   - Process one-patient input data
   - Calculate probability predictions
   - Convert outputs to risk percentage and classification label
 
-### Member 4 - Frontend/App Engineer
+### Nguyễn Ngọc Đình Trung - Frontend/App Engineer
 - Owns `heart_disease_app/ui.py`
 - Responsibilities:
   - Build Streamlit UI components
   - Design patient input form
   - Display metrics, charts, and prediction results
 
-### Member 5 - Integrator/PM
+### Lê Duy Anh - Integrator/PM
 - Owns `app.py` and project documentation
 - Responsibilities:
   - Orchestrate flow across all modules
@@ -94,7 +94,7 @@ streamlit run app.py
   - Validate end-to-end usage flow
   - Maintain README and project run instructions
 
-### Member 6 - QA/Release Engineer
+### Nguyễn Quốc Thái - QA/Release Engineer
 - Owns testing, quality gates, and release readiness
 - Responsibilities:
   - Create manual and automated test scenarios for data validation, training flow, and prediction outputs
