@@ -7,7 +7,7 @@ import streamlit as st
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score, roc_auc_score
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, cross_val_score
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 
@@ -76,6 +76,9 @@ def train_models(df: pd.DataFrame, target_col: str) -> TrainingResult:
         else:
             y_score = pipeline.decision_function(X_test)
 
+        # Cross-validation score to detect overfitting
+        cv_scores = cross_val_score(pipeline, X_train, y_train, cv=5, scoring="roc_auc")
+        
         rows.append(
             {
                 "Model": model_name,
@@ -84,6 +87,8 @@ def train_models(df: pd.DataFrame, target_col: str) -> TrainingResult:
                 "Recall": recall_score(y_test, y_pred, zero_division=0),
                 "F1": f1_score(y_test, y_pred, zero_division=0),
                 "ROC_AUC": _safe_roc_auc(y_test, y_score),
+                "CV_ROC_AUC": float(cv_scores.mean()),
+                "CV_Std": float(cv_scores.std()),
             }
         )
         fitted_models[model_name] = pipeline

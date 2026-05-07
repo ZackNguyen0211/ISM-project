@@ -36,10 +36,30 @@ def render_leaderboard(leaderboard: pd.DataFrame):
                 "Recall": "{:.3f}",
                 "F1": "{:.3f}",
                 "ROC_AUC": "{:.3f}",
+                "CV_ROC_AUC": "{:.3f}",
+                "CV_Std": "{:.6f}",
             }
         ),
         use_container_width=True,
     )
+    
+    # Check for overfitting (gap between test ROC-AUC and CV ROC-AUC)
+    best_row = leaderboard.iloc[0]
+    roc_auc = best_row.get("ROC_AUC", 0)
+    cv_roc_auc = best_row.get("CV_ROC_AUC", 0)
+    gap = roc_auc - cv_roc_auc if cv_roc_auc > 0 else 0
+    
+    if gap > 0.05:  # Large gap indicates overfitting
+        st.warning(
+            f"⚠️ **{best_row['Model']}** shows signs of overfitting! "
+            f"Test ROC-AUC ({roc_auc:.3f}) >> CV ROC-AUC ({cv_roc_auc:.3f}). "
+            f"Consider using a different model or adjusting hyperparameters."
+        )
+    elif roc_auc >= 0.99 and cv_roc_auc >= 0.99:
+        st.warning(
+            f"⚠️ **{best_row['Model']}** has perfect/near-perfect accuracy. "
+            f"This may indicate data leakage or overfitting. Verify data quality and splits."
+        )
 
 
 def render_feature_impact(model_name: str, model, feature_cols: List[str]):

@@ -15,7 +15,22 @@ TEST_SIZE = 0.2
 def get_model_candidates():
     return {
         "Logistic Regression": LogisticRegression(max_iter=2000, random_state=RANDOM_STATE),
-        "Random Forest": RandomForestClassifier(n_estimators=300, random_state=RANDOM_STATE),
-        "Gradient Boosting": GradientBoostingClassifier(random_state=RANDOM_STATE),
+        "Random Forest": RandomForestClassifier(
+            n_estimators=300,
+            max_depth=10,
+            min_samples_split=10,
+            min_samples_leaf=5,
+            max_features="sqrt",
+            random_state=RANDOM_STATE,
+        ),
+        "Gradient Boosting": GradientBoostingClassifier(
+            n_estimators=200,
+            max_depth=4,
+            min_samples_split=15,
+            min_samples_leaf=8,
+            subsample=0.7,
+            learning_rate=0.05,
+            random_state=RANDOM_STATE,
+        ),
         "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=9),
     }
